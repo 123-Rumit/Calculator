@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width", initial-scale="1.0"/>
+        <title>
+            Calculator
+        </title>
+
+        <!--Google Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"/>
+
+        <!--Stylesheet-->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+
+        <div class="landing-page">
+            <div class="button">
+                <a href="#calculator-wrapper">CALCULATOR</a>
+            </div>
+            <div class="button">
+                <a href="#container">FORM</a>
+            </div>
+        </div>
+
+        <div class="calculator-wrapper" id="calculator-wrapper">
+            <div class="calculator">
+                <div class="display">
+                    <input type="text" placeholder="0" id="input" disabled/>
+                </div>
+                
+                <div class="buttons">
+                    <!--Full Erase-->
+                    <input type="button" value="AC" id="clear"/>
+                    <!--Erase Single Value-->
+                    <input type="button" value="DEL" id="erase"/>
+
+                    <input type="button" value="/" class="input-button"/>   
+                    <input type="button" value="*" class="input-button"/>
+
+                    <input type="button" value="7" class="input-button"/>
+                    <input type="button" value="8" class="input-button"/>
+                    <input type="button" value="9" class="input-button"/>
+                    <input type="button" value="-" class="input-button"/>
+
+                    <input type="button" value="6" class="input-button"/>
+                    <input type="button" value="5" class="input-button"/>
+                    <input type="button" value="4" class="input-button"/>
+                    <input type="button" value="+" class="input-button"/>
+
+                    <input type="button" value="1" class="input-button"/>
+                    <input type="button" value="2" class="input-button"/>
+                    <input type="button" value="3" class="input-button"/>
+
+                    <input type="button" value="=" id="equal"/>
+                    <input type="button" value="0" class="input-button"/>
+                    <input type="button" value="." class="input-button"/>
+                </div>
+            </div>
+        </div>
+        <!--Script-->
+        <script src="./script.js"></script>
+
+
+
+        <div class="container" id="container">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h3>GET IN TOUCH</h3>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Email Id" required>
+                <input type="text" id="Phone" placeholder="Phone Number" required>
+                <textarea id="message" rows="5" placeholder="Please Enter your queries"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail() {
+                Email.send
+                ({
+                    Host : "smtp.elasticemail.com",
+                    Username : "rumit.shah1109@gmail.com",
+                    Password : "13E64EDED273CEFC52C4C82AAA215515590F",
+                    To : 'tejalshah24211@gmail.com',
+                    From : document.getElementById("email").value,
+                    Subject : "This is for new Contact Enquiry form",
+                    Body : "Name: " + document.getElementById("name").value
+                            + "<br> Email: " + document.getElementById("email").value
+                            + "<br> Phone Number: " + document.getElementById("Phone").value
+                            + "<br> Message: " + document.getElementById("message").value
+                }) .then(
+                    message => alert("Message Sent Successfully!!")
+                );
+            }
+        </script>
+    </body>
+</html>
